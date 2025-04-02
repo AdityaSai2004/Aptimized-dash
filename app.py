@@ -473,8 +473,8 @@ def main():
                 
                 # Coverage percentage
                 industry_coverage = len(available_solutions) / len(df) * 100
-                st.progress(industry_coverage/100)
-                st.caption(f"{industry_coverage:.1f}% solution coverage")
+                # st.progress(industry_coverage/100)
+                # st.caption(f"{industry_coverage:.1f}% solution coverage")
                 
                 # Show the list of available solutions for this industry
                 st.markdown("#### Available AI Solutions")
