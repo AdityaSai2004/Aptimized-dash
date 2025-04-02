@@ -525,13 +525,13 @@ def main():
         
         # Footer
         st.markdown("---")
-        footer_cols = st.columns([1, 1, 1])
-        with footer_cols[0]:
-            st.markdown("**Contact:** ai-solutions@yourcompany.com")
-        with footer_cols[1]:
-            st.markdown("**Documentation:** [View Solution Guide](https://example.com)")
-        with footer_cols[2]:
-            st.markdown("**Last updated:** April 2, 2025")
+        # footer_cols = st.columns([1, 1, 1])
+        # with footer_cols[0]:
+        #     st.markdown("**Contact:** ai-solutions@yourcompany.com")
+        # with footer_cols[1]:
+        #     st.markdown("**Documentation:** [View Solution Guide](https://example.com)")
+        # with footer_cols[2]:
+        #     st.markdown("**Last updated:** April 2, 2025")
 
 if __name__ == "__main__":
     main()
