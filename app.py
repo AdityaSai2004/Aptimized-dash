@@ -469,7 +469,7 @@ def main():
             
             with col1:
                 st.markdown(f"### {selected_industry}")
-                st.markdown(f"**Solutions available:** {len(available_solutions)}/{len(df)}")
+                st.markdown(f"**Solutions available:** {len(available_solutions)}")
                 
                 # Coverage percentage
                 industry_coverage = len(available_solutions) / len(df) * 100
