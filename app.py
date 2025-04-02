@@ -219,7 +219,7 @@ def main():
                 ["Blues", "Viridis", "Plasma", "Reds", "Greens"]
             )
             
-            show_percentages = st.checkbox("Show Percentages", value=True)
+            show_percentages = st.checkbox("Show Percentages", value=False)
         
         with st.sidebar.expander("💡 INSIGHTS", expanded=False):
             st.markdown("""
@@ -234,14 +234,14 @@ def main():
             """, unsafe_allow_html=True)
             
         st.sidebar.markdown("---")
-        st.sidebar.markdown("© 2025 Your Company Name | v1.2.0")
+        st.sidebar.markdown("© 2025 NeuronWorks | v1.2.0")
         
         # Main content area with tabs
         tab1, tab2, tab3 = st.tabs(["📊 Solutions Matrix", "🔍 Deep Dive", "📈 Industry Analysis"])
         
         with tab1:
             st.markdown("### AI Solutions by Industry")
-            st.markdown("This matrix shows which AI solutions are implemented across different industries")
+            st.markdown("This matrix shows which AI solutions can be implemented across different industries")
                         
             # Style the dataframe
             styled_df = filtered_df.set_index("AI Solution")
@@ -446,13 +446,13 @@ def main():
                     ]
                 }
                 
-                if selected_solution in implementation_examples:
-                    for example in implementation_examples[selected_solution]:
-                        st.markdown(f"✅ {example}")
-                else:
-                    st.markdown("✅ Custom implementation available based on industry requirements")
-                    st.markdown("✅ Integration with existing systems and workflows")
-                    st.markdown("✅ Continuous improvement through machine learning")
+                # if selected_solution in implementation_examples:
+                #     for example in implementation_examples[selected_solution]:
+                #         st.markdown(f"✅ {example}")
+                # else:
+                st.markdown("✅ Custom implementation available based on industry requirements")
+                st.markdown("✅ Integration with existing systems and workflows")
+                st.markdown("✅ Continuous improvement through machine learning")
             
         with tab3:
             # Industry focus
@@ -517,11 +517,11 @@ def main():
                 
                 # Add benchmark against industry average
                 avg_solutions = df_analysis.iloc[:, 1:].sum().mean()
-                st.metric(
-                    label=f"{selected_industry} vs. Industry Average", 
-                    value=f"{industry_counts} Solutions",
-                    delta=f"{industry_counts - avg_solutions:.1f} vs. Avg"
-                )
+                # st.metric(
+                #     label=f"{selected_industry} vs. Industry Average", 
+                #     value=f"{industry_counts} Solutions",
+                #     delta=f"{industry_counts - avg_solutions:.1f} vs. Avg"
+                # )
         
         # Footer
         st.markdown("---")
