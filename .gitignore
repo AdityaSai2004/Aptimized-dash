@@ -1,2 +1,8 @@
+# Ignore AVIF image files
+*.avif
+
+# Ignore Excel files
 *.xlsx
+
+# Ignore PDF files
 *.pdf
