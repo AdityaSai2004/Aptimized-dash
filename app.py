@@ -544,20 +544,20 @@ def main():
                 # fig = set_light_theme(fig)
                 # st.plotly_chart(fig, use_container_width=True)
                 # Display the table in Streamlit
-                if selected_industry == "Ecommerce":
-                    st.subheader("Industry Analysis - Ecommerce Sector")
-                    
-                    # Calculate height dynamically
-                    num_rows = len(df_2)
-                    table_height = (num_rows + 1) * 35 + 3  # Formula for height
-                    
-                    st.dataframe(
-                        df_2.set_index(df_2.columns[0])
-                            .style.hide(axis="index")
-                            .set_properties(**{'text-align': 'center'}),
-                        use_container_width=True,
-                        height=table_height  # Dynamically set height
-                    )                # Add benchmark against industry average
+                # if selected_industry == "Ecommerce":
+                st.subheader("Industry Analysis - Ecommerce Sector")
+                
+                # Calculate height dynamically
+                num_rows = len(df_2)
+                table_height = (num_rows + 1) * 35 + 3  # Formula for height
+                
+                st.dataframe(
+                    df_2.set_index(df_2.columns[0])
+                        .style.hide(axis="index")
+                        .set_properties(**{'text-align': 'center'}),
+                    use_container_width=True,
+                    height=table_height  # Dynamically set height
+                )                # Add benchmark against industry average
                 avg_solutions = df_analysis.iloc[:, 1:].sum().mean()
                 # st.metric(
                 #     label=f"{selected_industry} vs. Industry Average", 
