@@ -42,13 +42,13 @@ def set_light_theme(fig):
             showgrid=True,  
             gridcolor="lightgray",  # Light gray grid for visibility
             tickfont=dict(color="black"),  # X-axis labels in black
-            title=dict(text="X-Axis Title", font=dict(color="black"))  # X-axis title in black
+            title=dict(text="Our offerings", font=dict(color="black"))  # X-axis title in black
         ),
         yaxis=dict(
             showgrid=True,
             gridcolor="lightgray",
             tickfont=dict(color="black"),  # Y-axis labels in black
-            title=dict(text="Y-Axis Title", font=dict(color="black"))  # Y-axis title in black
+            title=dict(text="Number of possible ventures", font=dict(color="black"))  # Y-axis title in black
         ),
     )
     return fig
