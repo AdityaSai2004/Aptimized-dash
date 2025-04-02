@@ -31,6 +31,35 @@ data = {
 
 df = pd.DataFrame(data)
 
+import streamlit as st
+import pandas as pd
+
+# Sample Data (Modify as needed)
+data_2 = {
+    "Industry": [
+        "Hyperpersonalisation", "Recommendation Engine", "Chatbot", "Social Media Manager",
+        "AI Adverts", "Ticket Handling", "Customer Reviews Summariser", "AI Powered SEO Engine",
+        "AI Agent Copy Writer", "Analytics Dashboard", "Custom AI/ML Solutions",
+        "Business Analytics and Optimisation", "Business VoIP", "Live Chat",
+        "Multi Channel Service", "Reviews Management"
+    ],
+    "Content Marketing": ["✅", "", "", "✅", "✅", "", "", "", "✅", "", "✅", "", "", "", "", ""],
+    "Digital Advertising": ["✅", "✅", "✅", "✅", "✅", "", "", "", "✅", "", "✅", "✅", "", "", "", "✅"],
+    "Ecommerce": ["✅", "✅", "✅", "✅", "✅", "✅", "✅", "", "✅", "✅", "✅", "✅", "✅", "", "✅", "✅"],
+    "SEO Services": ["✅", "", "", "", "", "", "", "✅", "", "", "", "", "", "", "", ""],
+    "Shopify Ecommerce": ["✅", "✅", "✅", "", "", "✅", "✅", "", "", "✅", "", "✅", "✅", "", "✅", "✅"],
+    "Social Media": ["✅", "", "✅", "✅", "✅", "✅", "", "✅", "✅", "", "", "", "", "✅", "✅", "✅"],
+    "UX Website Design": ["", "", "✅", "", "", "", "", "✅", "", "", "✅", "✅", "", "", "", ""],
+    "Website Assessment": ["", "", "", "", "", "", "", "✅", "", "✅", "✅", "✅", "", "", "", "✅"]
+}
+
+
+# Convert to DataFrame
+df_2 = pd.DataFrame(data_2)
+df_2 = df_2.reset_index(drop=True)
+
+
+
 def set_light_theme(fig):
     fig.update_layout(
         template="plotly_white",
@@ -465,7 +494,7 @@ def main():
             industry_data = df[["AI Solution", selected_industry]]
             available_solutions = industry_data[industry_data[selected_industry] == "✔"]["AI Solution"].tolist()
             
-            col1, col2 = st.columns([1, 1])
+            col1, col2 = st.columns([1, 2])
             
             with col1:
                 st.markdown(f"### {selected_industry}")
@@ -503,19 +532,32 @@ def main():
                 ])
                 comparison_df = comparison_df.sort_values("Solution Count", ascending=False)
                 
-                fig = px.bar(
-                    comparison_df,
-                    x="Industry",
-                    y="Solution Count",
-                    color="Industry",
-                    title="AI Solution Count by Industry",
-                    color_discrete_sequence=px.colors.qualitative.Plotly
-                )
-                fig.update_layout(height=400, margin=dict(l=40, r=40, t=50, b=40))
-                fig = set_light_theme(fig)
-                st.plotly_chart(fig, use_container_width=True)
-                
-                # Add benchmark against industry average
+                # fig = px.bar(
+                #     comparison_df,
+                #     x="Industry",
+                #     y="Solution Count",
+                #     color="Industry",
+                #     title="AI Solution Count by Industry",
+                #     color_discrete_sequence=px.colors.qualitative.Plotly
+                # )
+                # fig.update_layout(height=400, margin=dict(l=40, r=40, t=50, b=40))
+                # fig = set_light_theme(fig)
+                # st.plotly_chart(fig, use_container_width=True)
+                # Display the table in Streamlit
+                if selected_industry == "Ecommerce":
+                    st.subheader("Industry Analysis - Ecommerce Sector")
+                    
+                    # Calculate height dynamically
+                    num_rows = len(df_2)
+                    table_height = (num_rows + 1) * 35 + 3  # Formula for height
+                    
+                    st.dataframe(
+                        df_2.set_index(df_2.columns[0])
+                            .style.hide(axis="index")
+                            .set_properties(**{'text-align': 'center'}),
+                        use_container_width=True,
+                        height=table_height  # Dynamically set height
+                    )                # Add benchmark against industry average
                 avg_solutions = df_analysis.iloc[:, 1:].sum().mean()
                 # st.metric(
                 #     label=f"{selected_industry} vs. Industry Average", 
